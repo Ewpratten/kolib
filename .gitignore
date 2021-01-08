@@ -42,3 +42,10 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# Toolchain
+.build
+config
+.config
+build
+config.gen
