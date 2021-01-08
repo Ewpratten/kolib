@@ -38,6 +38,11 @@ RUN mkdir -p /root/src
 RUN ct-ng build
 # USER root
 
+# Load rawdraw deps
+RUN apt-get install xorg-dev libx11-dev libxinerama-dev libxext-dev mesa-common-dev libglu1-mesa-dev -y
+RUN apt-get install cmake -y
+
+
 # Pull in local files. Mainly to build the rest of the deps.
 # RUN mkdir -p /kolib_sources
 # WORKDIR /kolib_sources
