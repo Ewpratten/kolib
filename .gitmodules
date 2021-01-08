@@ -1,0 +1,6 @@
+[submodule "thirdparty/raygui"]
+	path = thirdparty/raygui
+	url = https://github.com/raysan5/raygui
+[submodule "thirdparty/rawdraw"]
+	path = thirdparty/rawdraw
+	url = https://github.com/cntools/rawdraw
