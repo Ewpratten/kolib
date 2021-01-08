@@ -1,0 +1,5 @@
+#! /bin/bash
+
+set -e
+
+docker run -it -v $(pwd):/work ewpratten/kolib_toolchain:crosstools /bin/bash -c "cd /work/build && make "$@""
