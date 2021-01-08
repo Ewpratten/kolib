@@ -41,6 +41,7 @@ RUN ct-ng build
 # Load rawdraw deps
 RUN apt-get install xorg-dev libx11-dev libxinerama-dev libxext-dev mesa-common-dev libglu1-mesa-dev -y
 RUN apt-get install cmake -y
+RUN apt-get install libx11-dev -y
 
 
 # Pull in local files. Mainly to build the rest of the deps.

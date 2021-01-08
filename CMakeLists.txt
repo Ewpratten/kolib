@@ -1,4 +1,4 @@
-project(kolib CXX)
+project(kolib CXX C)
 cmake_minimum_required(VERSION 3.13)
 
 set(CMAKE_SYSTEM_NAME Linux)
@@ -13,19 +13,17 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-
+# A little test program
 add_executable(hello hello/main.cc)
-# 
 
 # External deps
-# add_subdirectory(thirdparty)
+add_subdirectory(thirdparty)
 
 # KoLib
-# add_library(kolib
-#     STATIC
+add_library(kolib
+    STATIC
 
-#     src/fs/paths.hh
-
-#     # DEPENDS thirdparty/raygui
-# )
-# set_property(TARGET kolib PROPERTY CXX_STANDARD 20)
+    src/fs/paths.hh
+    src/test.cc
+)
+target_link_libraries(kolib thirdparty/rawdraw)

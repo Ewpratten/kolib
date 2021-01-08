@@ -7,7 +7,7 @@
 namespace kobo {
 namespace fs {
 
-std::shared_ptr<std::string> getOnboardStorageLocation();
+// std::shared_ptr<std::string> getOnboardStorageLocation();
 
 }  // namespace fs
 }  // namespace kobo
