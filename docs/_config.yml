@@ -1,0 +1,24 @@
+title: KoLib Documentation
+lang: en
+description: Software library for writing programs for Kobo products
+baseurl: "/kolib"
+
+## remote method ##
+remote_theme: rundocs/jekyll-rtd-theme
+
+readme_index:
+  with_frontmatter: true
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  math_engine: mathjax
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
