@@ -18,10 +18,14 @@
 
 # add_subdirectory(raylib)
 
-find_package(X11 COMPONENTS X11 Xft)
+find_package(X11 REQUIRED)
+
 add_library(rawdraw
     STATIC
 
     rawdraw/rawdraw.c
     rawdraw/CNFG.h
     )
+# add_dependencies(rawdraw ${X11_LIBRARIES})
+target_link_libraries(rawdraw ${X11_LIBRARIES})
+target_include_directories(rawdraw PRIVATE ${X11_INCLUDE_DIR})
