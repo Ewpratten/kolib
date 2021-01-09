@@ -11,6 +11,6 @@ quote USER root
 quote PASS 
 binary
 cd /mnt/onboard/deploy
-put $2
+put $2 ./$(basename $2)
 quit
 END_SCRIPT
