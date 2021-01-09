@@ -2,3 +2,15 @@
 
 set -e
 
+echo "Ensuring root@$1:/mnt/onboard/deploy is ready for files"
+ssh root@$1 mkdir -p /mnt/onboard/deploy
+
+echo "Copying $2 to root@$1:/mnt/onboard/deploy"
+ftp -n $1 <<END_SCRIPT
+quote USER root
+quote PASS 
+binary
+cd /mnt/onboard/deploy
+put $2
+quit
+END_SCRIPT
