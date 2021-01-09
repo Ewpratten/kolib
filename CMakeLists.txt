@@ -29,6 +29,8 @@ add_library(kolib
     src/hw/power.hh
     src/hw/board.cc
     src/hw/board.hh
+    src/hw/frontlight.cc
+    src/hw/frontlight.hh
 
     # util
     src/util/fio.cc
