@@ -38,5 +38,6 @@ add_library(kolib
     src/net/interfaces.cc
     src/net/interfaces.hh
 )
+include_directories(src)
 # add_dependencies(kolib rawdraw)
 # target_link_libraries(kolib rawdraw)

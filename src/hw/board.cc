@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <array>
 #include <cstdio>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
+#include <vector>
 
 #include "../util/fio.hh"
-#include <memory>
-#include <stdexcept>
 
 std::string kobo::hw::getDeviceCodename() {
     // Try to read codename from env
@@ -22,7 +24,7 @@ std::string kobo::hw::getDeviceCodename() {
 
     // Open the kobo config process
     std::unique_ptr<FILE, decltype(&pclose)> pipe(
-        popen("/bin/kobo_config.sh 2>/dev/null", "r"), pclose);
+        popen("sh -c '/bin/kobo_config.sh 2>/dev/null'", "r"), pclose);
 
     // Handle failure to run proc
     if (!pipe) {
@@ -52,41 +54,17 @@ std::string kobo::hw::getFirmwareVersion() {
     }
 
     // Slice out the firmware data, and return
-    int fwStartIndex;
-    int fwEndIndex;
-    int commasFound = 0;
-    for (int i = 0; i < fwInfo.length(); i++) {
-        // Look for commas
-        if (fwInfo.at(i) == ',') {
-            commasFound++;
-        }
+    std::vector<std::string> splitFwInfo;
+    std::stringstream fwInfoStream(fwInfo);
 
-        // If the second comma has been found, add the next element as the fw
-        // string start
-        if (fwStartIndex == 0 && commasFound == 2) {
-            fwStartIndex = i + 1;
-        }
+    while(fwInfoStream.good()){
 
-        // If the third comma has been found, mark it as the string end
-        if (fwEndIndex == 0 && commasFound == 3) {
-            fwEndIndex = i - fwStartIndex;
-        }
+        // Get the next section of data between commas
+        std::string substr;
+        std::getline(fwInfoStream, substr, ',');
+        splitFwInfo.push_back(substr);
     }
 
-    return fwInfo.substr(fwStartIndex, fwEndIndex);
-
-    // local version_file = io.open("/mnt/onboard/.kobo/version", "r")
-    // if not version_file then
-    //     self.firmware_rev = "none"
-    // end
-    // local version_str = version_file:read()
-    // version_file:close()
-
-    // local i = 0
-    // for field in util.gsplit(version_str, ",", false, false) do
-    //     i = i + 1
-    //     if (i == 3) then
-    //          self.firmware_rev = field
-    //     end
-    // end
+    // The third element is the firmware version
+    return splitFwInfo[2];
 }
