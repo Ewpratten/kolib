@@ -23,6 +23,16 @@ Assuming this is true, you can easily deploy any file you want to the Kobo's dep
 
 ## Building KoLib
 
+### Cloning
+
+This repository uses submodules, and must be cloned with:
+
+```sh
+git clone --recursive https://github.com/Ewpratten/kolib.git
+```
+
+### Compiling
+
 The KoLib toolcahin is built on docker, so docker must be installed on the development system. You'll also want to pull the toolchain image with:
 
 ```sh
