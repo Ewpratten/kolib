@@ -4,6 +4,3 @@
 [submodule "thirdparty/rawdraw"]
 	path = thirdparty/rawdraw
 	url = https://github.com/cntools/rawdraw
-[submodule "thirdparty/raylib"]
-	path = thirdparty/raylib
-	url = https://github.com/raysan5/raylib
