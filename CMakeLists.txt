@@ -25,8 +25,18 @@ add_library(kolib
     src/fs/paths.hh
 
     # hw
-    src/hw/power.cc
+    src/hw/battery.hh
     src/hw/power.hh
+    src/hw/board.cc
+    src/hw/board.hh
+
+    # util
+    src/util/fio.cc
+    src/util/fio.hh
+
+    # net
+    src/net/interfaces.cc
+    src/net/interfaces.hh
 )
 # add_dependencies(kolib rawdraw)
 # target_link_libraries(kolib rawdraw)
