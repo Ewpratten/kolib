@@ -1,17 +1,17 @@
 project(kolib CXX C)
 cmake_minimum_required(VERSION 3.13)
 
-# set(CMAKE_SYSTEM_NAME Linux)
-# set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
 
-# set(tools /root/x-tools/arm-kobo-linux-gnueabihf)
-# set(CMAKE_C_COMPILER ${tools}/bin/arm-kobo-linux-gnueabihf-gcc)
-# set(CMAKE_CXX_COMPILER ${tools}/bin/arm-kobo-linux-gnueabihf-g++)
+set(tools /root/x-tools/arm-kobo-linux-gnueabihf)
+set(CMAKE_C_COMPILER ${tools}/bin/arm-kobo-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER ${tools}/bin/arm-kobo-linux-gnueabihf-g++)
 
-# set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-# set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-# set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-# set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 
 # External deps
@@ -21,8 +21,8 @@ cmake_minimum_required(VERSION 3.13)
 add_library(kolib
     STATIC
 
-    # fs
-    src/fs/paths.hh
+    src/koboconf.cc
+    src/koboconf.hh
 
     # hw
     src/hw/battery.hh
@@ -40,10 +40,3 @@ add_library(kolib
 )
 # add_dependencies(kolib rawdraw)
 # target_link_libraries(kolib rawdraw)
-
-# A little test program
-add_executable(hello 
-    hello/main.cc
-    )
-add_dependencies(hello kolib)
-target_link_libraries(hello kolib)

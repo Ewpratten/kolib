@@ -2,9 +2,10 @@
 
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 
-template<typename T>
+template <typename T>
 T kobo::util::readFromFile(std::string path) {
     // Fetch the file
     std::fstream file(path, std::ios_base::in);
@@ -19,4 +20,13 @@ T kobo::util::readFromFile(std::string path) {
     file >> result;
 
     return result;
+}
+
+std::fstream& kobo::util::seekToLine(std::fstream& file, u_int number) {
+    file.clear();
+    file.seekg(std::ios::beg);
+    for (int i = 0; i < number - 1; ++i) {
+        file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    return file;
 }
