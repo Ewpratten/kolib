@@ -1,4 +1,4 @@
-# KoLib
+# KoLib ![Build library](https://github.com/Ewpratten/kolib/workflows/Build%20library/badge.svg)
 
 KoLib is a modern c++ library to assist in development of software targeting [Kobo](https://www.kobo.com/) products.
 
